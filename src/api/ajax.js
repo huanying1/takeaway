@@ -1,8 +1,8 @@
 import axios from 'axios'
+// axios.defaults.baseURL = 'http://localhost:4001/'
 
 export default async function ajax(url, data = {}, type = 'GET') {
   try {
-    let res = null
     if (type === 'GET') {
       let dataStr = ''
       Object.keys(data).forEach(key => {
@@ -12,9 +12,9 @@ export default async function ajax(url, data = {}, type = 'GET') {
         dataStr = dataStr.substring(0, dataStr.lastIndexOf('&'))
         url = `${url}?${dataStr}`
       }
-      return {data} = await axios.get(url)
+      return  await axios.get(url)
     } else {
-      return {data} = await axios.post(url, data)
+      return  await axios.post(url, data)
     }
   } catch (e) {
     throw new Error(e)
